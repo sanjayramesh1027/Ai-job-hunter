@@ -33,7 +33,7 @@ assert.equal(failure.jobs.length,0);
 assert(failure.message.includes('OpenAI request failed'));
 const demo=run('demo.js',{})[0].json;
 assert.equal(demo.jobs.length,2);
-for(const f of ['jarvis-job-hunter.json','jarvis-offline-demo.json']) {
+for(const f of ['ai-job-hunter.json','ai-job-hunter-demo.json']) {
  const flow=JSON.parse(fs.readFileSync(path.join(root,'workflows',f),'utf8'));
  const names=new Set(flow.nodes.map(n=>n.name));
  for(const [a,outputs] of Object.entries(flow.connections)) {assert(names.has(a));for(const lane of outputs.main) for(const v of lane)assert(names.has(v.node));}
