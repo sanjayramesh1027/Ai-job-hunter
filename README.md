@@ -23,8 +23,8 @@ flowchart LR
 
 | File | Purpose |
 | --- | --- |
-| `workflows/jarvis-job-hunter.json` | Importable production workflow, disabled until configured |
-| `workflows/jarvis-offline-demo.json` | Safe two-node demo without API, Gmail or real employers |
+| `workflows/ai-job-hunter.json` | Importable production workflow, disabled until configured |
+| `workflows/ai-job-hunter-demo.json` | Safe two-node demo without API, Gmail or real employers |
 | `src/prepare.js` | Parse Gmail MIME bodies, build verified candidate profile and limit prompt size |
 | `src/digest.js` | Validate model output, reject untrusted URLs, estimate fit, format notification |
 | `src/mark-sent.js` | Save previously emailed job keys **after Gmail send succeeds** |
@@ -34,13 +34,13 @@ flowchart LR
 ## Setup in n8n Cloud (10 steps)
 
 1. Download / clone this repo and open **n8n > Workflows > New workflow > menu (⋯) > Import from File**.
-2. Import `workflows/jarvis-job-hunter.json`. Do **not** publish/activate yet.
+2. Import `workflows/ai-job-hunter.json`. Do **not** publish/activate yet.
 3. Connect your own **Gmail OAuth credential** in the nodes **Find Job Alert Emails**, **Fetch Full Email Content** and **Email Daily Digest**. Gmail access must be permitted by your account administrator if using school/work email.
 4. Open **Prepare Candidate and Alerts** and set `recipient` to the mailbox where you want the digest. Keep your actual email **only in your private n8n instance**, not in your public GitHub JSON.
 5. Verify every fact in `profile` and edit to reflect **your true skills and graduation status**. The included candidate profile is a sanitized example based on verified background; it deliberately does not claim Python, Power BI, Power Automate, or a completed CS degree.
 6. Create an **OpenAI API credential** in n8n and select it under **AI Evaluate Jobs**. This is API billing, separate from ChatGPT subscriptions. The HTTP node uses `gpt-4o-mini` with JSON mode; switch models only after checking model availability and compatible parameters.
 7. Confirm Gmail alerts are arriving. The Gmail query currently searches only the last **two days**. The **Get Many** node retrieves at most 35 messages, the second Gmail node fetches the full body for each, and the code caps prompt content and URLs.
-8. Import `workflows/jarvis-offline-demo.json` separately, execute its **Manual Test Trigger**, and confirm it returns two **fictional** jobs with scores and no errors. This verifies the basic workflow UI, not the Gmail/OpenAI integration.
+8. Import `workflows/ai-job-hunter-demo.json` separately, execute its **Manual Test Trigger**, and confirm it returns two **fictional** jobs with scores and no errors. This verifies the basic workflow UI, not the Gmail/OpenAI integration.
 9. Back in the real workflow, use **Execute workflow** once. Inspect outputs in every node, verify a digest arrives, and check that URL links lead to actual job pages. If the Gmail search yields zero messages, send yourself a test alert or widen `newer_than:2d` temporarily. **Beware: manual runs may send a real email.**
 10. When everything works, **publish / activate** the workflow and verify one scheduled 8 AM Pacific run. Re-run only after inspecting results to avoid extra API costs or notifications.
 
