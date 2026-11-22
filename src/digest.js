@@ -31,7 +31,7 @@ for (const x of (Array.isArray(parsed.jobs) ? parsed.jobs : [])) {
     resumeSuggestions:(Array.isArray(x.resumeSuggestions)?x.resumeSuggestions:[]).slice(0,3).map(str)});
 }
 jobs.sort((a,b) => b.score - a.score);
-const lines = ['JARVIS JOB HUNTER | CALIFORNIA',
+const lines = ['AI Job Hunter | CALIFORNIA',
   `Source emails: ${(source.alerts||[]).length} | New, not previously emailed matches: ${jobs.length}`,
   'Scores are estimated resume fit, not hiring probabilities. Verify every job is open and check eligibility.', ''];
 for (const [i,j] of jobs.entries()) {
@@ -45,5 +45,5 @@ for (const [i,j] of jobs.entries()) {
 }
 if (!jobs.length) lines.push('No new validated matches. Your alerts may have no qualifying listings or this run may need troubleshooting.');
 if (warnings.length) lines.push('ISSUES / WARNINGS:\n- ' + warnings.join('\n- '));
-return [{json:{recipient:source.recipient,subject:`Jarvis Job Hunter | ${jobs.length} new matches${warnings.length?' | check warnings':''}`,
+return [{json:{recipient:source.recipient,subject:`AI Job Hunter | ${jobs.length} new matches${warnings.length?' | check warnings':''}`,
   message:lines.join('\n'),newKeys:jobs.map(j=>j.key),jobs,warnings}}];
