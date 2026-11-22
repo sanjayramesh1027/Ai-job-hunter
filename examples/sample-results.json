@@ -1,0 +1,8 @@
+{
+  "demoOnly": true,
+  "disclaimer": "Employers, job descriptions, and URLs are fictional. Illustrates the local test format only.",
+  "jobs": [
+    {"title":"Program Operations Intern","company":"Example University","location":"California","score":80,"url":"https://example.org/jobs/102"},
+    {"title":"Data Entry Assistant","company":"Sample City","location":"Los Angeles, CA","score":65,"url":"https://example.org/jobs/100"}
+  ]
+}
