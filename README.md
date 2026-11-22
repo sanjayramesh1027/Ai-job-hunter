@@ -1,4 +1,4 @@
-# Jarvis AI Job Hunter | n8n Portfolio Edition
+# AI Job Hunter | n8n Portfolio Edition
 
 ![Tests](https://img.shields.io/badge/tests-local%20passing-brightgreen) ![Workflow](https://img.shields.io/badge/n8n-importable-blue) ![Stage](https://img.shields.io/badge/status-starter%20workflow-orange)
 
