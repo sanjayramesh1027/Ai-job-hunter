@@ -1,5 +1,5 @@
 {
-  "name": "jarvis-job-hunter-n8n-portfolio",
+  "name": "ai-job-hunter-n8n-portfolio",
   "private": true,
   "version": "1.0.0",
   "description": "Importable n8n job alert scoring workflow and credential-free demo",
